@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { FaBook } from "react-icons/fa";
 
 function ApplicationListing({ job }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -18,6 +19,7 @@ function ApplicationListing({ job }) {
         {showFullDescription ? "Less" : "More"}
       </button>
       <a href={`/application/${job.id}`} className="underline">
+        <FaBook />
         View Job
       </a>
     </Fragment>
