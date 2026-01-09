@@ -8,7 +8,7 @@ function HomePage() {
     <>
       <Hero title="This is the Title" subtitle="This is the subtitle" />
       <HomeCards />
-      <ApplicationListings sliceSize="3" />
+      <ApplicationListings isHome={true} />
     </>
   );
 }

@@ -6,10 +6,12 @@ function NotFoundPage() {
   return (
     <>
       <FaExclamationTriangle className="text-yellow-400 text-6xl mb-4" />
-      <h1>Page Not found</h1>
+      <h1 className="text-yellow-400">Page Not found</h1>
       <br />
       <br />
-      <Link to="/">Go Back</Link>
+      <Link to="/" className="underline">
+        Go Back
+      </Link>
     </>
   );
 }

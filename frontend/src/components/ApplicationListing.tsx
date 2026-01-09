@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { FaBook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function ApplicationListing({ job }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -18,10 +19,10 @@ function ApplicationListing({ job }) {
       <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
         {showFullDescription ? "Less" : "More"}
       </button>
-      <a href={`/application/${job.id}`} className="underline">
+      <Link to={`/application/${job.id}`} className="underline">
         <FaBook />
         View Job
-      </a>
+      </Link>
     </Fragment>
   );
 }
