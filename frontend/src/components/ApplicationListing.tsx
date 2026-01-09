@@ -2,26 +2,25 @@ import React, { Fragment, useState } from "react";
 import { FaBook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function ApplicationListing({ job }) {
-  const [showFullDescription, setShowFullDescription] = useState(false);
+function ApplicationListing({ application }) {
+  const [showFullAd, setShowFullDescription] = useState(false);
 
-  let description = job.description;
+  let ad = application.ad;
 
-  if (!showFullDescription) {
-    description = description.substring(0, 90) + "...";
+  if (!showFullAd) {
+    ad = ad.substring(0, 90) + "...";
   }
 
   return (
-    <Fragment key={job.id}>
-      <p>Id:{job.id}</p>
-      <p>Title: {job.title}</p>
-      <p>Description: {description}</p>
+    <Fragment key={application.id}>
+      <p>Id:{application.id}</p>
+      <p>Ad: {ad}</p>
       <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
-        {showFullDescription ? "Less" : "More"}
+        {showFullAd ? "Less" : "More"}
       </button>
-      <Link to={`/application/${job.id}`} className="underline">
+      <Link to={`/application/${application.id}`} className="underline">
         <FaBook />
-        View Job
+        View Application
       </Link>
     </Fragment>
   );
