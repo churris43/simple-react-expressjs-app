@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import ApplicationListing from "./ApplicationListing";
+import Spinner from "./Spinner";
 
 function ApplicationListings({ isHome }) {
   const [applications, setApplications] = useState([]);
@@ -14,7 +15,8 @@ function ApplicationListings({ isHome }) {
       try {
         const res = await fetch("http://localhost/api/application");
         const data = await res.json();
-        setApplications(data);
+        const slicedData = isHome ? data.slice(0, 3) : data;
+        setApplications(slicedData);
         setLoading(false);
       } catch (error) {
         console.log("Error", error);
@@ -25,7 +27,7 @@ function ApplicationListings({ isHome }) {
   return (
     <div>
       {loading ? (
-        <h2>Loading</h2>
+        <Spinner loading={loading} />
       ) : (
         <>
           {applications.map((application) => (
