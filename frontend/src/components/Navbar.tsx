@@ -1,14 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const linkClass = ({ isActive }: { isActive: boolean }): string =>
+    isActive ? "bg-black text-white" : "bg-white text-black";
+
   return (
     <>
-      <Link to="/">Home</Link>
+      <NavLink to="/" className={linkClass}>
+        Home
+      </NavLink>
       <br />
-      <Link to="/applications">Applications</Link>
+      <NavLink to="/applications" className={linkClass}>
+        Applications
+      </NavLink>
       <br />
-      <Link to="/new">Add Application</Link>
+      <NavLink to="/new" className={linkClass}>
+        Add Application
+      </NavLink>
       <br />
       <br />
     </>
