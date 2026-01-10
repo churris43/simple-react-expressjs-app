@@ -6,20 +6,17 @@ function ApplicationListings({ isHome }) {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const applicationsToDisplay = isHome
-    ? applications.slice(0, 3)
-    : applications;
-
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const res = await fetch("http://localhost/api/application");
+        const res = await fetch("api/application");
         const data = await res.json();
         const slicedData = isHome ? data.slice(0, 3) : data;
         setApplications(slicedData);
-        setLoading(false);
       } catch (error) {
         console.log("Error", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchApplications();

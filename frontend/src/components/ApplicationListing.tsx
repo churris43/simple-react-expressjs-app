@@ -18,7 +18,7 @@ function ApplicationListing({ application }) {
       <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
         {showFullAd ? "Less" : "More"}
       </button>
-      <Link to={`/application/${application.id}`} className="underline">
+      <Link to={`/applications/${application.id}`} className="underline">
         <FaBook />
         View Application
       </Link>
