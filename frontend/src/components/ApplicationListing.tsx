@@ -14,7 +14,9 @@ function ApplicationListing({ application }) {
   return (
     <Fragment key={application.id}>
       <p>Id:{application.id}</p>
+      <p>Id:{application.companyName}</p>
       <p>Ad: {ad}</p>
+      <p>Application Date: {application.create_time}</p>
       <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
         {showFullAd ? "Less" : "More"}
       </button>

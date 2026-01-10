@@ -14,7 +14,7 @@ const Navbar = () => {
         Applications
       </NavLink>
       <br />
-      <NavLink to="/new" className={linkClass}>
+      <NavLink to="/applications/new" className={linkClass}>
         Add Application
       </NavLink>
       <br />

@@ -9,6 +9,9 @@ import MainLayout from "./layouts/MainLayout";
 import ApplicationsPage from "./pages/ApplicationsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ApplicationPage, { applicationLoader } from "./pages/ApplicationPage";
+import AddApplicationPage, {
+  action as addApplicationAction,
+} from "./pages/AddApplicationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +23,11 @@ const router = createBrowserRouter(
         element={<ApplicationPage />}
         loader={applicationLoader}
       />
+      <Route
+        path="applications/new"
+        element={<AddApplicationPage />}
+        action={addApplicationAction}
+      ></Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
