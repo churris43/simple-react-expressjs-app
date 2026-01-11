@@ -1,5 +1,5 @@
 // useLoaderData is the mehcanism to fetch the record and allows to use the function elsewhere
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 async function applicationLoader({ params }) {
@@ -17,6 +17,27 @@ async function applicationLoader({ params }) {
 
 function ApplicationPage() {
   const application = useLoaderData();
+  const params = useParams();
+  const navigate = useNavigate(); // Add this hook
+
+  const deleteApplication = async () => {
+    //console.log(params);
+    try {
+      const res = await fetch(`/api/application/${params.applicationID}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.status != 201) {
+        return { success: false };
+      }
+      console.log("REdirect:" + res.status);
+      navigate("/applications");
+    } catch (error) {
+      return { success: false };
+    }
+  };
 
   return (
     <>
@@ -28,6 +49,13 @@ function ApplicationPage() {
       <p>{application.ad} </p>
       <br />
       <p>{application.create_time}</p>
+      <button
+        className="border-2 bg-red-300"
+        type="submit"
+        onClick={deleteApplication}
+      >
+        Delete
+      </button>
     </>
   );
 }
