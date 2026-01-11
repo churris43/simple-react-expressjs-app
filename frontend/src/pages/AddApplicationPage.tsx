@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { redirect } from "react-router-dom";
 import {
   Form,
   useActionData,
@@ -18,16 +18,22 @@ export async function action({ request }) {
     create_time: formData.get("create_time"),
   };
 
-  const res = await fetch("/api/application", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(submission),
-  });
-
-  console.log("Form Submitted:", submission);
-  return { success: true };
+  try {
+    const res = await fetch("/api/application", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submission),
+    });
+    console.log(res.status);
+    if (res.status != 201) {
+      return { success: false };
+    }
+    return redirect("/applications");
+  } catch (error) {
+    return { success: false };
+  }
 }
 
 function AddApplicationPage() {
