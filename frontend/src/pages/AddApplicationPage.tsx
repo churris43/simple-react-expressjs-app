@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   Form,
   useActionData,
@@ -26,12 +27,14 @@ export async function action({ request }) {
       },
       body: JSON.stringify(submission),
     });
-    console.log(res.status);
     if (res.status != 201) {
+      toast.error("Unable to add application");
       return { success: false };
     }
+    toast.success("Application added successfully");
     return redirect("/applications");
   } catch (error) {
+    toast.error("Unable to add application");
     return { success: false };
   }
 }
