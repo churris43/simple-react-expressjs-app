@@ -5,7 +5,10 @@ import ApplicationListings from "../components/ApplicationListings";
 function HomePage() {
   return (
     <>
-      <Hero title="This is the Title" subtitle="This is the subtitle" />
+      <Hero
+        title="Manage your applications"
+        subtitle="This is a sample application built for learning purposess."
+      />
       <HomeCards />
       <ApplicationListings isHome={true} />
     </>
