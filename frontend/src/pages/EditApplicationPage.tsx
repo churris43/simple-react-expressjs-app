@@ -1,10 +1,14 @@
-import { redirect } from "react-router-dom";
+import {
+  useLoaderData,
+  useParams,
+  Form,
+  useNavigation,
+  Link,
+  redirect,
+} from "react-router-dom";
 import { toast } from "react-toastify";
-import { Form, useActionData, useNavigation } from "react-router-dom";
 
-// 1. The Action function (usually in the same file or a separate 'actions.js')
-// This runs when the form is submitted
-export async function action({ request }) {
+export async function action({ request, params }) {
   const formData = await request.formData();
 
   // Extract data using the 'name' attributes from the HTML fields
@@ -15,27 +19,32 @@ export async function action({ request }) {
   };
 
   try {
-    const res = await fetch("/api/application", {
-      method: "POST",
+    const res = await fetch("/api/application/" + params.applicationID, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(submission),
     });
     if (res.status != 201) {
-      toast.error("Unable to add application");
+      toast.error("Unable to edit application");
       return { success: false };
     }
-    toast.success("Application added successfully");
-    return redirect("/applications");
+    toast.success("Application edit successfully");
+    return redirect("/applications/" + params.applicationID);
   } catch (error) {
     toast.error("Unable to add application");
     return { success: false };
   }
 }
 
-function AddApplicationPage() {
-  const actionData = useActionData(); // Access response from the action above
+function EditApplicationPage() {
+  const application = useLoaderData();
+
+  const params = useParams();
+
+  const displayDate: string = application.create_time.substring(0, 16);
+
   const navigation = useNavigation(); // Track loading/submitting state
 
   const isSubmitting = navigation.state === "submitting";
@@ -51,17 +60,25 @@ function AddApplicationPage() {
             name="companyName"
             className="border-1"
             required
+            defaultValue={application.companyName}
           />
         </div>
 
         <div>
           <label htmlFor="ad">Ad:</label>
-          <textarea id="ad" name="ad" className="border-1" required></textarea>
+          <textarea
+            id="ad"
+            name="ad"
+            className="border-1"
+            required
+            defaultValue={application.ad}
+          />
         </div>
 
         <div>
           <label htmlFor="create_time">Date and Time:</label>
           <input
+            defaultValue={displayDate}
             type="datetime-local"
             id="create_time"
             name="create_time"
@@ -76,7 +93,7 @@ function AddApplicationPage() {
             disabled={isSubmitting}
             className="bg-blue-200 border-2"
           >
-            {isSubmitting ? "Saving..." : "Submit Ad"}
+            {isSubmitting ? "Saving..." : "Submit Application"}
           </button>
         </div>
       </Form>
@@ -84,4 +101,4 @@ function AddApplicationPage() {
   );
 }
 
-export default AddApplicationPage;
+export default EditApplicationPage;

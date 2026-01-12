@@ -62,6 +62,12 @@ function ApplicationPage() {
       >
         Delete
       </button>
+      <Link
+        to={`/applications/edit/${params.applicationID}`}
+        className="border-2 bg-gray-300"
+      >
+        Edit
+      </Link>
     </>
   );
 }

@@ -12,6 +12,9 @@ import ApplicationPage, { applicationLoader } from "./pages/ApplicationPage";
 import AddApplicationPage, {
   action as addApplicationAction,
 } from "./pages/AddApplicationPage";
+import EditApplicationPage, {
+  action as editApplicationAction,
+} from "./pages/EditApplicationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +25,12 @@ const router = createBrowserRouter(
         path="applications/:applicationID"
         element={<ApplicationPage />}
         loader={applicationLoader}
+      />
+      <Route
+        path="applications/edit/:applicationID"
+        element={<EditApplicationPage />}
+        loader={applicationLoader}
+        action={editApplicationAction}
       />
       <Route
         path="applications/new"
