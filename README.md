@@ -24,7 +24,11 @@ This is a very small and simple CRUD web app to manage job applications. The app
 
 ## Running the application
 
-The application is dockerised. To run enter the docker command from the root folder of your project:
+The application is dockerised.
+
+It requires a .env file with some configuration details such as database credentials. You can use the .env.example file as the baseline for your .env.
+
+Once you have a .env file, run enter the docker command from the root folder of your project:
 
 `docker compose up --build`
 
