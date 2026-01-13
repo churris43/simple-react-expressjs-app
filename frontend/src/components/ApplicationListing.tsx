@@ -1,9 +1,16 @@
 import { Fragment, useState } from "react";
-import { FaBook } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { format, parseISO } from "date-fns";
 
 function ApplicationListing({ application }) {
   const [showFullAd, setShowFullDescription] = useState(false);
+
+  // Helper function to format dates
+  const formatDate = (mysqlDatetime: string): string => {
+    const isoDate = mysqlDatetime.replace(" ", "T");
+    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm");
+  };
 
   let ad = application.ad;
 
@@ -13,17 +20,37 @@ function ApplicationListing({ application }) {
 
   return (
     <Fragment key={application.id}>
-      <p>Id:{application.id}</p>
-      <p>Id:{application.companyName}</p>
-      <p>Ad: {ad}</p>
-      <p>Application Date: {application.create_time}</p>
-      <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
-        {showFullAd ? "Less" : "More"}
-      </button>
-      <Link to={`/applications/${application.id}`} className="underline">
-        <FaBook />
-        View Application
-      </Link>
+      <div className="bg-white rounded-xl shadow-md relative">
+        <div className="p-4">
+          <div className="mb-6">
+            <h3 className="text-xl font-bold">{application.companyName}</h3>
+          </div>
+
+          <div className="mb-5 text-gray-600 text-lg">{ad}</div>
+
+          <button
+            className="text-indigo-500 mb-5 hover:text-indigo-600"
+            onClick={() => setShowFullDescription((prevState) => !prevState)}
+          >
+            {showFullAd ? "Less" : "More"}
+          </button>
+
+          <div className="border border-gray-100 mb-5"></div>
+
+          <div className="flex flex-col lg:flex-row justify-between mb-4">
+            <div className="mb-3">
+              <FaCalendar className="inline text-lg mb-1 mr-1" />
+              {formatDate(application.create_time)}
+            </div>
+            <Link
+              to={`/applications/${application.id}`}
+              className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+            >
+              View Application
+            </Link>
+          </div>
+        </div>
+      </div>
     </Fragment>
   );
 }
