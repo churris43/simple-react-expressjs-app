@@ -1,9 +1,9 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { format, parseISO } from "date-fns";
 import type { Application } from "../models/Application";
 import ViewMore from "./ViewMore";
+import { formatDate } from "../helpers/DateTime";
 
 interface ApplicationListingProps {
   application: Application;
@@ -12,12 +12,6 @@ interface ApplicationListingProps {
 function ApplicationListing({ application }: ApplicationListingProps) {
   const [showFullAd, setShowFullDescription] = useState(false);
 
-  // Helper function to format dates
-  const formatDate = (mysqlDatetime: string): string => {
-    const isoDate = mysqlDatetime.replace(" ", "T");
-    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm a");
-  };
-
   let ad = application.ad;
 
   if (!showFullAd) {
@@ -25,7 +19,7 @@ function ApplicationListing({ application }: ApplicationListingProps) {
   }
 
   return (
-    <Fragment key={application.id}>
+    <>
       <div className="bg-white rounded-xl shadow-md relative">
         <div className="p-4">
           <div className="mb-6">
@@ -58,7 +52,7 @@ function ApplicationListing({ application }: ApplicationListingProps) {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
 

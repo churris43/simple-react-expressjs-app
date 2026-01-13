@@ -2,8 +2,8 @@
 import { useLoaderData, useParams, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaArrowLeft } from "react-icons/fa";
-import { format, parseISO } from "date-fns";
 import type { ActionFunctionArgs } from "react-router-dom";
+import { formatDate } from "../helpers/DateTime";
 
 async function applicationLoader({ params }: ActionFunctionArgs) {
   try {
@@ -22,12 +22,6 @@ function ApplicationPage() {
   const application = useLoaderData();
   const params = useParams();
   const navigate = useNavigate(); // Add this hook
-
-  // Helper function to format dates
-  const formatDate = (mysqlDatetime: string): string => {
-    const isoDate = mysqlDatetime.replace(" ", "T");
-    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm a");
-  };
 
   const deleteApplication = async () => {
     const confirm: boolean = window.confirm(
