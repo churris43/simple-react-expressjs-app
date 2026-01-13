@@ -2,13 +2,7 @@ import { Fragment, useState } from "react";
 import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { format, parseISO } from "date-fns";
-
-interface Application {
-  id: number;
-  companyName: string;
-  ad: string;
-  create_time: string;
-}
+import type { Application } from "../models/Application";
 
 interface ApplicationListingProps {
   application: Application;

@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import ApplicationListing from "./ApplicationListing";
 import Spinner from "./Spinner";
-
-interface Application {
-  id: number;
-  companyName: string;
-  ad: string;
-  create_time: string;
-}
+import type { Application } from "../models/Application";
 
 interface ApplicationListingsProps {
   isHome: boolean;
