@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Form, useActionData, useNavigation, Link } from "react-router-dom";
+import { Form, useNavigation, Link } from "react-router-dom";
 
 // 1. The Action function (usually in the same file or a separate 'actions.js')
 // This runs when the form is submitted
@@ -35,7 +35,6 @@ export async function action({ request }) {
 }
 
 function AddApplicationPage() {
-  const actionData = useActionData(); // Access response from the action above
   const navigation = useNavigation(); // Track loading/submitting state
 
   const isSubmitting = navigation.state === "submitting";
@@ -75,7 +74,7 @@ function AddApplicationPage() {
                   id="ad"
                   name="ad"
                   className="border rounded w-full py-2 px-3"
-                  rows="7"
+                  rows={7}
                   required
                 ></textarea>
               </div>

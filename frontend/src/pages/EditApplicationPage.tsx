@@ -86,7 +86,7 @@ function EditApplicationPage() {
                   defaultValue={application.ad}
                   name="ad"
                   className="border rounded w-full py-2 px-3"
-                  rows="7"
+                  rows={7}
                   required
                 />
               </div>

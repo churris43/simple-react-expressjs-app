@@ -1,6 +1,5 @@
 // useLoaderData is the mehcanism to fetch the record and allows to use the function elsewhere
-import { useLoaderData, useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useLoaderData, useParams, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaArrowLeft } from "react-icons/fa";
 import { format, parseISO } from "date-fns";

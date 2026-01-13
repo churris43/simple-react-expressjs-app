@@ -5,7 +5,11 @@ const override = {
   margin: "100px auto",
 };
 
-function Spinner({ loading }) {
+interface SpinnerProps {
+  loading: boolean;
+}
+
+function Spinner({ loading }: SpinnerProps) {
   return (
     <ClipLoader
       color="#4338ca"

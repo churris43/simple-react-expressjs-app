@@ -3,7 +3,14 @@ import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 
-function ApplicationListing({ application }) {
+interface Application {
+  id: number;
+  companyName: string;
+  ad: string;
+  create_time: string;
+}
+
+function ApplicationListing({ application }: Application) {
   const [showFullAd, setShowFullDescription] = useState(false);
 
   // Helper function to format dates
