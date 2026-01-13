@@ -3,6 +3,7 @@ import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 import type { Application } from "../models/Application";
+import ViewMore from "./ViewMore";
 
 interface ApplicationListingProps {
   application: Application;
@@ -35,12 +36,11 @@ function ApplicationListing({ application }: ApplicationListingProps) {
             {ad}
           </div>
 
-          <button
-            className="text-indigo-500 mb-5 hover:text-indigo-600"
-            onClick={() => setShowFullDescription((prevState) => !prevState)}
-          >
-            {showFullAd ? "Less" : "More"}
-          </button>
+          <ViewMore
+            whenClicked={() => setShowFullDescription(!showFullAd)}
+            text={application.ad}
+            expanded={showFullAd}
+          />
 
           <div className="border border-gray-100 mb-5"></div>
 
