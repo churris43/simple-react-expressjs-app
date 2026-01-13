@@ -10,7 +10,11 @@ interface Application {
   create_time: string;
 }
 
-function ApplicationListing({ application }: Application) {
+interface ApplicationListingProps {
+  application: Application;
+}
+
+function ApplicationListing({ application }: ApplicationListingProps) {
   const [showFullAd, setShowFullDescription] = useState(false);
 
   // Helper function to format dates
