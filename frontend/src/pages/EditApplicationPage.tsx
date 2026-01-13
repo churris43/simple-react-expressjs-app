@@ -51,52 +51,74 @@ function EditApplicationPage() {
 
   return (
     <>
-      <Form method="post">
-        <div>
-          <label htmlFor="companyName">Company Name:</label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            className="border-1"
-            required
-            defaultValue={application.companyName}
-          />
+      <section className="bg-indigo-50">
+        <div className="container m-auto max-w-2xl py-24">
+          <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+            <Form method="post">
+              <h2 className="text-3xl text-center font-semibold mb-6">
+                Add Applications
+              </h2>
+              <div className="mb-4">
+                <label
+                  htmlFor="companyName"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Company Name:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={application.companyName}
+                  id="companyName"
+                  name="companyName"
+                  className="border rounded w-full py-2 px-3"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="ad"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Ad:
+                </label>
+                <textarea
+                  id="ad"
+                  defaultValue={application.ad}
+                  name="ad"
+                  className="border rounded w-full py-2 px-3"
+                  rows="7"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="create_time"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Date and Time:
+                </label>
+                <input
+                  type="datetime-local"
+                  defaultValue={displayDate}
+                  id="create_time"
+                  name="create_time"
+                  className="block text-gray-700 font-bold mb-2"
+                  required
+                />
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                >
+                  {isSubmitting ? "Saving..." : "Submit Application"}
+                </button>
+              </div>
+            </Form>
+          </div>
         </div>
-
-        <div>
-          <label htmlFor="ad">Ad:</label>
-          <textarea
-            id="ad"
-            name="ad"
-            className="border-1"
-            required
-            defaultValue={application.ad}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="create_time">Date and Time:</label>
-          <input
-            defaultValue={displayDate}
-            type="datetime-local"
-            id="create_time"
-            name="create_time"
-            className="border-1"
-            required
-          />
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-blue-200 border-2"
-          >
-            {isSubmitting ? "Saving..." : "Submit Application"}
-          </button>
-        </div>
-      </Form>
+      </section>
     </>
   );
 }
