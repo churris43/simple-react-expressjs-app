@@ -56,7 +56,7 @@ function EditApplicationPage() {
           <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
             <Form method="post">
               <h2 className="text-3xl text-center font-semibold mb-6">
-                Add Applications
+                Edit Application
               </h2>
               <div className="mb-4">
                 <label
@@ -110,10 +110,16 @@ function EditApplicationPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white mb-2 font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline block"
                 >
                   {isSubmitting ? "Saving..." : "Submit Application"}
                 </button>
+                <Link
+                  to={`/applications/${params.applicationID}`}
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline block text-center"
+                >
+                  Cancel
+                </Link>
               </div>
             </Form>
           </div>

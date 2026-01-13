@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Form, useActionData, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation, Link } from "react-router-dom";
 
 // 1. The Action function (usually in the same file or a separate 'actions.js')
 // This runs when the form is submitted
@@ -98,11 +98,17 @@ function AddApplicationPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mb-2"
                 >
                   {isSubmitting ? "Saving..." : "Submit Application"}
                 </button>
               </div>
+              <Link
+                to={`/`}
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline block text-center"
+              >
+                Cancel
+              </Link>
             </Form>
           </div>
         </div>
