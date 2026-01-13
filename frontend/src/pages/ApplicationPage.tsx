@@ -26,7 +26,7 @@ function ApplicationPage() {
   // Helper function to format dates
   const formatDate = (mysqlDatetime: string): string => {
     const isoDate = mysqlDatetime.replace(" ", "T");
-    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm");
+    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm a");
   };
 
   const deleteApplication = async () => {
@@ -76,7 +76,7 @@ function ApplicationPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-indigo-800 text-lg font-bold mb-6">
-                Application Ad
+                Job Description
               </h3>
 
               <p className="mb-4 whitespace-pre-wrap">{application.ad}</p>
@@ -84,7 +84,7 @@ function ApplicationPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-indigo-800 text-lg font-bold mb-6">
-                Date and Time
+                Application Date
               </h3>
 
               <p className="mb-4">{formatDate(application.create_time)}</p>

@@ -20,7 +20,7 @@ function ApplicationListing({ application }: ApplicationListingProps) {
   // Helper function to format dates
   const formatDate = (mysqlDatetime: string): string => {
     const isoDate = mysqlDatetime.replace(" ", "T");
-    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm");
+    return format(parseISO(isoDate), "dd/MM/yyyy HH:mm a");
   };
 
   let ad = application.ad;
