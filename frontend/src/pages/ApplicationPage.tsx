@@ -3,8 +3,9 @@ import { useLoaderData, useParams, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaArrowLeft } from "react-icons/fa";
 import { format, parseISO } from "date-fns";
+import type { ActionFunctionArgs } from "react-router-dom";
 
-async function applicationLoader({ params }) {
+async function applicationLoader({ params }: ActionFunctionArgs) {
   try {
     const res = await fetch(`/api/application/${params.applicationID}`);
     if (!res.ok) {

@@ -1,10 +1,11 @@
 import { redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Form, useNavigation, Link } from "react-router-dom";
+import type { ActionFunctionArgs } from "react-router-dom";
 
 // 1. The Action function (usually in the same file or a separate 'actions.js')
 // This runs when the form is submitted
-export async function action({ request }) {
+export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
 
   // Extract data using the 'name' attributes from the HTML fields
