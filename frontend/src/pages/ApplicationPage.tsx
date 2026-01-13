@@ -52,7 +52,7 @@ function ApplicationPage() {
       </Link>
       <h1>Id: {application.companyName} </h1>
       <br />
-      <p>{application.ad} </p>
+      <p className="whitespace-pre-wrap">{application.ad} </p>
       <br />
       <p>{application.create_time}</p>
       <button

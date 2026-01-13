@@ -26,7 +26,9 @@ function ApplicationListing({ application }) {
             <h3 className="text-xl font-bold">{application.companyName}</h3>
           </div>
 
-          <div className="mb-5 text-gray-600 text-lg">{ad}</div>
+          <div className="mb-5 text-gray-600 text-lg whitespace-pre-wrap">
+            {ad}
+          </div>
 
           <button
             className="text-indigo-500 mb-5 hover:text-indigo-600"
