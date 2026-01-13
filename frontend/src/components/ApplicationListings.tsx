@@ -2,8 +2,19 @@ import { useEffect, useState } from "react";
 import ApplicationListing from "./ApplicationListing";
 import Spinner from "./Spinner";
 
-function ApplicationListings({ isHome }) {
-  const [applications, setApplications] = useState([]);
+interface Application {
+  id: number;
+  companyName: string;
+  ad: string;
+  create_time: string;
+}
+
+interface ApplicationListingsProps {
+  isHome: boolean;
+}
+
+function ApplicationListings({ isHome }: ApplicationListingsProps) {
+  const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
