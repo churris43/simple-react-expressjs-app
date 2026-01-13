@@ -7,8 +7,9 @@ import {
   redirect,
 } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { ActionFunctionArgs } from "react-router-dom";
 
-export async function action({ request, params }) {
+export async function action({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
 
   // Extract data using the 'name' attributes from the HTML fields
