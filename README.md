@@ -24,7 +24,7 @@ This is a very small and simple CRUD web app to manage job applications. The app
 
 ## Running the application
 
-The application is dockerised. To run it in a docker container run the following command:
+The application is dockerised. To run enter the docker command from the root folder of your project:
 
 `docker compose up --build`
 
