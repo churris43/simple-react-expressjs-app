@@ -30,7 +30,9 @@ app.get("/health", (_req: Request, res: Response) => {
 
 app.get("/application", async (req: Request, res: Response) => {
   try {
-    const [rows] = await connection.execute("SELECT * FROM application");
+    const [rows] = await connection.execute(
+      "SELECT * FROM application ORDER BY create_time desc"
+    );
     res.json(rows);
   } catch (error) {
     console.error("Error:", error);
