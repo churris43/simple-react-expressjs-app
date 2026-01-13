@@ -19,12 +19,12 @@ function HomeCards() {
             </Card>
             <Card bg="bg-indigo-100">
               <h2 className="text-2xl font-bold">For Employers</h2>
-              <p className="mt-2 mb-4"> Add an Applications </p>
+              <p className="mt-2 mb-4"> Add an Application </p>
               <Link
                 to="/applications/new"
                 className="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
               >
-                Add Applications
+                Add Application
               </Link>
             </Card>
           </div>

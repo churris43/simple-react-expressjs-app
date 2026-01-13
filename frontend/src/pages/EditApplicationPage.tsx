@@ -12,7 +12,6 @@ import type { ActionFunctionArgs } from "react-router-dom";
 export async function action({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
 
-  // Extract data using the 'name' attributes from the HTML fields
   const submission = {
     companyName: formData.get("companyName"),
     ad: formData.get("ad"),
@@ -46,7 +45,7 @@ function EditApplicationPage() {
 
   const displayDate: string = application.create_time.substring(0, 16);
 
-  const navigation = useNavigation(); // Track loading/submitting state
+  const navigation = useNavigation();
 
   const isSubmitting = navigation.state === "submitting";
 
@@ -80,7 +79,7 @@ function EditApplicationPage() {
                   htmlFor="ad"
                   className="block text-gray-700 font-bold mb-2"
                 >
-                  Ad:
+                  Job Description:
                 </label>
                 <textarea
                   id="ad"
@@ -96,7 +95,7 @@ function EditApplicationPage() {
                   htmlFor="create_time"
                   className="block text-gray-700 font-bold mb-2"
                 >
-                  Date and Time:
+                  Application Date:
                 </label>
                 <input
                   type="datetime-local"

@@ -69,7 +69,7 @@ function AddApplicationPage() {
                   htmlFor="ad"
                   className="block text-gray-700 font-bold mb-2"
                 >
-                  Ad:
+                  Job Description:
                 </label>
                 <textarea
                   id="ad"
@@ -84,7 +84,7 @@ function AddApplicationPage() {
                   htmlFor="create_time"
                   className="block text-gray-700 font-bold mb-2"
                 >
-                  Date and Time:
+                  Application Date:
                 </label>
                 <input
                   type="datetime-local"

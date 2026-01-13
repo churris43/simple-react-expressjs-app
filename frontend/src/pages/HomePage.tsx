@@ -7,7 +7,7 @@ function HomePage() {
     <>
       <Hero
         title="Manage your applications"
-        subtitle="This is a sample application built for learning purposess."
+        subtitle="This is a sample of a CRUD application to manage job applications built for learning purposess where ."
       />
       <HomeCards />
       <ApplicationListings isHome={true} />
