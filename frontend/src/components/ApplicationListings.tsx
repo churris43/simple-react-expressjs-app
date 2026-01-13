@@ -43,10 +43,7 @@ function ApplicationListings({ isHome }: ApplicationListingsProps) {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {applications.map((application) => (
-              <ApplicationListing
-                key={application.id}
-                application={application}
-              />
+              <ApplicationListing application={application} />
             ))}
           </div>
         )}
